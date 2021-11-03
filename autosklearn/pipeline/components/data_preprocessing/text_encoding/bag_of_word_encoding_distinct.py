@@ -15,7 +15,7 @@ from autosklearn.pipeline.constants import DENSE, SPARSE, UNSIGNED_DATA, INPUT
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-class BagOfWordEncoder(AutoSklearnPreprocessingAlgorithm):
+class BagOfWordEncoderDistinct(AutoSklearnPreprocessingAlgorithm):
     def __init__(
             self,
             min_df_choice=None,
