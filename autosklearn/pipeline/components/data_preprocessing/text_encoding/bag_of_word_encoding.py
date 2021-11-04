@@ -16,11 +16,11 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 class BagOfWordEncoder(AutoSklearnPreprocessingAlgorithm):
     def __init__(
-            self,
-            min_df_choice=None,
-            min_df_absolute=None,
-            min_df_relative=None,
-            random_state: Optional[Union[int, np.random.RandomState]] = None
+        self,
+        min_df_choice: str = None,
+        min_df_absolute: bool = None,
+        min_df_relative: bool = None,
+        random_state: Optional[Union[int, np.random.RandomState]] = None
     ) -> None:
         self.random_state = random_state
         self.min_df_choice = min_df_choice

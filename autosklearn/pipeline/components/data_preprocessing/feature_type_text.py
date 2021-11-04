@@ -7,8 +7,9 @@ import numpy as np
 from sklearn.base import BaseEstimator
 
 from autosklearn.pipeline.components.data_preprocessing.text_encoding \
-    import BOWChoice
-from autosklearn.pipeline.components.data_preprocessing.feature_reduction.truncated_svd import FeatureReduction
+    import BagOfWordChoice
+from autosklearn.pipeline.components.data_preprocessing.text_feature_reduction.truncated_svd import \
+    TextFeatureReduction
 from autosklearn.pipeline.base import (
     BasePipeline,
     DATASET_PROPERTIES_TYPE,
@@ -35,14 +36,14 @@ class TextPreprocessingPipeline(BasePipeline):
         used by `np.random`."""
 
     def __init__(
-            self,
-            config: Optional[Configuration] = None,
-            steps: Optional[List[Tuple[str, BaseEstimator]]] = None,
-            dataset_properties: Optional[DATASET_PROPERTIES_TYPE] = None,
-            include: Optional[Dict[str, str]] = None,
-            exclude: Optional[Dict[str, str]] = None,
-            random_state: Optional[Union[int, np.random.RandomState]] = None,
-            init_params: Optional[Dict[str, Any]] = None
+        self,
+        config: Optional[Configuration] = None,
+        steps: Optional[List[Tuple[str, BaseEstimator]]] = None,
+        dataset_properties: Optional[DATASET_PROPERTIES_TYPE] = None,
+        include: Optional[Dict[str, str]] = None,
+        exclude: Optional[Dict[str, str]] = None,
+        random_state: Optional[Union[int, np.random.RandomState]] = None,
+        init_params: Optional[Dict[str, Any]] = None
     ) -> None:
         self._output_dtype = np.int32
         super().__init__(
@@ -109,8 +110,8 @@ class TextPreprocessingPipeline(BasePipeline):
 
         # ToDo implemenent the feature reduction
         steps.extend([
-            ("text_encoding", BOWChoice(default_dataset_properties)),
-            ("feature_reduction", FeatureReduction())
+            ("text_encoding", BagOfWordChoice(default_dataset_properties)),
+            ("text_feature_reduction", TextFeatureReduction())
         ])
         return steps
 

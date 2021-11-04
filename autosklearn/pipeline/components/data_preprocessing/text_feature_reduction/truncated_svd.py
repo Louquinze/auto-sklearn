@@ -13,29 +13,30 @@ from autosklearn.pipeline.constants import DENSE, SPARSE, UNSIGNED_DATA, INPUT
 from sklearn.decomposition import TruncatedSVD
 
 
-class FeatureReduction(AutoSklearnPreprocessingAlgorithm):
+class TextFeatureReduction(AutoSklearnPreprocessingAlgorithm):
     """
     Reduces the features created by a bag of words encoding
     """
 
     def __init__(
-            self,
-            n_components=None,
-            random_state: Optional[Union[int, np.random.RandomState]] = None
+        self,
+        n_components=None,
+        random_state: Optional[Union[int, np.random.RandomState]] = None
     ) -> None:
         self.n_components = n_components
         self.random_state = random_state
 
     def fit(self, X: PIPELINE_DATA_DTYPE, y: Optional[PIPELINE_DATA_DTYPE] = None
-            ) -> 'FeatureReduction':
-        X = csr_matrix(X)
+            ) -> 'TextFeatureReduction':
         if X.shape[1] > self.n_components:
-            self.preprocessor = TruncatedSVD(n_components=self.n_components)
+            self.preprocessor = TruncatedSVD(n_components=self.n_components,
+                                             random_state=self.random_state)
         elif X.shape[1] <= self.n_components and X.shape[1] != 1:
-            self.preprocessor = TruncatedSVD(n_components=X.shape[1] - 1)
+            self.preprocessor = TruncatedSVD(n_components=X.shape[1] - 1,
+                                             random_state=self.random_state)
         else:
-            raise ValueError("The text embedding concistes only of a one dimension.\n"
-                             "Are you sure that your text data is necessery ?\n")
+            raise ValueError("The text embedding consists only of a single dimension.\n"
+                             "Are you sure that your text data is necessary?")
         self.preprocessor.fit(X)
         return self
 
@@ -47,8 +48,8 @@ class FeatureReduction(AutoSklearnPreprocessingAlgorithm):
     @staticmethod
     def get_properties(dataset_properties: Optional[DATASET_PROPERTIES_TYPE] = None
                        ) -> Dict[str, Optional[Union[str, int, bool, Tuple]]]:
-        return {'shortname': 'FeatureReduction',
-                'name': 'FeatureReduction',
+        return {'shortname': 'TextFeatureReduction',
+                'name': 'TextFeatureReduction',
                 'handles_missing_values': True,
                 'handles_nominal_values': True,
                 'handles_numerical_features': True,
@@ -72,6 +73,6 @@ class FeatureReduction(AutoSklearnPreprocessingAlgorithm):
                                         ) -> ConfigurationSpace:
         cs = ConfigurationSpace()
         cs.add_hyperparameter(
-            CSH.UniformIntegerHyperparameter("n_components", lower=50, upper=1000,
+            CSH.UniformIntegerHyperparameter("n_components", lower=1, upper=10000,
                                              default_value=100, log=True))
         return cs

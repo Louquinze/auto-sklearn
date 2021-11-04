@@ -27,6 +27,7 @@ class FeatureValidator(BaseEstimator):
     Checks the input data to Auto-Sklearn.
     It also determines what columns are categorical and which ones are numerical,
     so that the pre-processing pipeline can process this columns accordingly.
+
     Attributes
     ----------
         feat_type: typing.Optional[typing.List[str]]
@@ -37,6 +38,7 @@ class FeatureValidator(BaseEstimator):
                 + If not provided, by default all columns are treated as numerical
             If the input dataset is of type pandas dataframe, this argument
             must be none, as the column type will be inferred from the pandas dtypes.
+
         data_type:
             Class name of the data type provided during fit.
     """
@@ -79,6 +81,7 @@ class FeatureValidator(BaseEstimator):
         Validates input data to Auto-Sklearn.
         The supported data types are List, numpy arrays and pandas DataFrames.
         CSR sparse data types are also supported
+
         Parameters
         ----------
         X_train: SUPPORTED_FEAT_TYPES
@@ -125,7 +128,6 @@ class FeatureValidator(BaseEstimator):
                     ))
 
                 for ft in self.feat_type.values():
-                    print(ft)
                     if ft.lower() not in ['categorical', 'numerical', 'string']:
                         raise ValueError('Only `Categorical`, `Numerical` and `String` are '
                                          'valid feature types')
@@ -151,11 +153,13 @@ class FeatureValidator(BaseEstimator):
         """
         Validates and fit a categorical encoder (if needed) to the features.
         The supported data types are List, numpy arrays and pandas DataFrames.
+
         Parameters
         ----------
             X_train: SUPPORTED_FEAT_TYPES
                 A set of features, whose categorical features are going to be
                 transformed
+
         Return
         ------
             np.ndarray:
@@ -189,6 +193,7 @@ class FeatureValidator(BaseEstimator):
     ) -> None:
         """
         Feature dimensionality and data type checks
+
         Parameters
         ----------
             X: SUPPORTED_FEAT_TYPES
@@ -259,11 +264,13 @@ class FeatureValidator(BaseEstimator):
         """
         Returns a dictionary that maps pandas dataframe columns to a feature type.
         This feature type can be categorical, numerical or string
+
         Parameters
         ----------
             X: pd.DataFrame
                 A set of features that are going to be validated (type and dimensionality
                 checks) and a encoder fitted in the case the data needs encoding
+
         Returns
         -------
             feat_type:
@@ -333,7 +340,9 @@ class FeatureValidator(BaseEstimator):
     ) -> typing.Tuple[pd.DataFrame, typing.Optional[pd.DataFrame]]:
         """
         Converts a list to a pandas DataFrame. In this process, column types are inferred.
+
         If test data is provided, we proactively match it to train data
+
         Parameters
         ----------
             X_train: SUPPORTED_FEAT_TYPES
@@ -341,6 +350,7 @@ class FeatureValidator(BaseEstimator):
                 checks) and a encoder fitted in the case the data needs encoding
             X_test: typing.Optional[SUPPORTED_FEAT_TYPES]
                 A hold out set of data used for checking
+
         Returns
         -------
             pd.DataFrame:

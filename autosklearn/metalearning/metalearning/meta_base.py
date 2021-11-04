@@ -51,7 +51,7 @@ class MetaBase(object):
                 configurations[str(algorithm_id)] = \
                     (Configuration(configuration_space, values=configuration))
             except (ValueError, KeyError) as e:
-                self.logger.debug("Error reading configurations: %s", e)
+               self.logger.debug("Error reading configurations: %s", e)
 
         self.configurations = configurations
 

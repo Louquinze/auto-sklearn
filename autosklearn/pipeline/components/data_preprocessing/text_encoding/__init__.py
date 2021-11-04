@@ -21,11 +21,11 @@ _bows = find_components(__package__,
 _addons = ThirdPartyComponents(AutoSklearnPreprocessingAlgorithm)
 
 
-def add_bow(bow: 'BOWChoice') -> None:
+def add_bow(bow: 'BagOfWordChoice') -> None:
     _addons.add_component(bow)
 
 
-class BOWChoice(AutoSklearnChoice):
+class BagOfWordChoice(AutoSklearnChoice):
 
     @classmethod
     def get_components(cls: BaseEstimator) -> Dict[str, BaseEstimator]:
@@ -85,7 +85,7 @@ class BOWChoice(AutoSklearnChoice):
 
     def set_hyperparameters(self, configuration: Configuration,
                             init_params: Optional[Dict[str, Any]] = None
-                            ) -> 'BOWChoice':
+                            ) -> 'BagOfWordChoice':
         new_params = {}
 
         params = configuration.get_dictionary()
