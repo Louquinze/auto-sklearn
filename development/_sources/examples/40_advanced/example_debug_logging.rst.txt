@@ -174,11 +174,11 @@ Build and fit a classifier
 
  .. code-block:: none
 
-    2022-01-14 11:03:35,385 - Client-EnsembleBuilder - INFO - DummyFuture: ([{'Timestamp': Timestamp('2022-01-14 11:03:35.371019'), 'ensemble_optimization_score': 0.9886363636363636, 'ensemble_test_score': 0.9899874843554443}], 50, None, None, None)/SingleThreadedClient() Started Ensemble builder job at 2022.01.14-11.03.35 for iteration 0.
-    2022-01-14 11:03:40,216 - Client-EnsembleBuilder - INFO - DummyFuture: ([{'Timestamp': Timestamp('2022-01-14 11:03:40.200340'), 'ensemble_optimization_score': 0.9911616161616161, 'ensemble_test_score': 0.9899874843554443}], 50, None, None, None)/SingleThreadedClient() Started Ensemble builder job at 2022.01.14-11.03.40 for iteration 1.
+    2022-01-14 12:09:19,656 - Client-EnsembleBuilder - INFO - DummyFuture: ([{'Timestamp': Timestamp('2022-01-14 12:09:19.636759'), 'ensemble_optimization_score': 0.47853535353535354, 'ensemble_test_score': 0.47434292866082606}], 50, None, None, None)/SingleThreadedClient() Started Ensemble builder job at 2022.01.14-12.09.19 for iteration 0.
+    2022-01-14 12:09:24,396 - Client-EnsembleBuilder - INFO - DummyFuture: ([{'Timestamp': Timestamp('2022-01-14 12:09:24.376748'), 'ensemble_optimization_score': 0.9646464646464646, 'ensemble_test_score': 0.9762202753441802}], 50, None, None, None)/SingleThreadedClient() Started Ensemble builder job at 2022.01.14-12.09.24 for iteration 1.
     tmp_folder/smac3-output
-    tmp_folder/AutoML(1):9af6ae14-7529-11ec-8755-33d367a7910d.log
     tmp_folder/distributed.log
+    tmp_folder/AutoML(1):c958e6e7-7532-11ec-878f-a5a17ebfef0c.log
     tmp_folder/space.json
     tmp_folder/.auto-sklearn
 
@@ -188,7 +188,7 @@ Build and fit a classifier
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  19.052 seconds)
+   **Total running time of the script:** ( 0 minutes  19.206 seconds)
 
 
 .. _sphx_glr_download_examples_40_advanced_example_debug_logging.py:

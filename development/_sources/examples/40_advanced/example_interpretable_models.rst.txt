@@ -233,17 +233,18 @@ Print the final ensemble constructed by auto-sklearn
 
  .. code-block:: none
 
-    {   20: {   'balancing': Balancing(random_state=1),
-                'classifier': <autosklearn.pipeline.components.classification.ClassifierChoice object at 0x7f8e5fadcc10>,
-                'cost': 0.007092198581560294,
-                'data_preprocessor': <autosklearn.pipeline.components.data_preprocessing.DataPreprocessorChoice object at 0x7f8e7793b970>,
+    {   25: {   'balancing': Balancing(random_state=1, strategy='weighting'),
+                'classifier': <autosklearn.pipeline.components.classification.ClassifierChoice object at 0x7f676d230be0>,
+                'cost': 0.014184397163120588,
+                'data_preprocessor': <autosklearn.pipeline.components.data_preprocessing.DataPreprocessorChoice object at 0x7f6767db5e20>,
                 'ensemble_weight': 1.0,
-                'feature_preprocessor': <autosklearn.pipeline.components.feature_preprocessing.FeaturePreprocessorChoice object at 0x7f8e5fadc1c0>,
-                'model_id': 20,
+                'feature_preprocessor': <autosklearn.pipeline.components.feature_preprocessing.FeaturePreprocessorChoice object at 0x7f676d2309a0>,
+                'model_id': 25,
                 'rank': 1,
-                'sklearn_classifier': SGDClassifier(alpha=0.0003336259810364362, eta0=0.010000000000000014,
-                  learning_rate='invscaling', loss='log', max_iter=16,
-                  random_state=1, tol=0.006915066463246923, warm_start=True)}}
+                'sklearn_classifier': SGDClassifier(alpha=0.00013472385980057696, average=True,
+                  eta0=0.015682161241819252, learning_rate='constant',
+                  loss='squared_hinge', max_iter=64, random_state=1,
+                  tol=8.952867418273408e-05, warm_start=True)}}
 
 
 
@@ -270,7 +271,7 @@ Get the Score of the final ensemble
 
  .. code-block:: none
 
-    Accuracy score: 0.958041958041958
+    Accuracy score: 0.965034965034965
 
 
 
@@ -278,7 +279,7 @@ Get the Score of the final ensemble
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  54.940 seconds)
+   **Total running time of the script:** ( 1 minutes  58.015 seconds)
 
 
 .. _sphx_glr_download_examples_40_advanced_example_interpretable_models.py:
